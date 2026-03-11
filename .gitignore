@@ -1,0 +1,29 @@
+bin/
+obj/
+Debug/
+Release/
+
+*.sln.iml
+.vscode/
+
+# Blazor / web assets
+wwwroot/**/*.map
+*.staticwebassets.cache
+*.staticwebassets.build.json
+*.staticwebassets.development.json
+*.staticwebassets.runtime.json
+*.staticwebassets.endpoints.json
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Packages
+*.nupkg
+*.snupkg
+
+# Others
+*.gz

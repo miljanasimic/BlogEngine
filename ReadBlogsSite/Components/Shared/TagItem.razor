@@ -1,0 +1,20 @@
+<span class="badge text-bg-secondary tag-item"
+      role="button"
+      @onclick="OnClick">
+    @Name
+</span>
+
+@code {
+
+    [Parameter] public string Name { get; set; } = "";
+
+    [Parameter] public int TagId { get; set; } = 0;
+
+    [Inject]
+    NavigationManager Navigation { get; set; } = default!;
+
+    void OnClick()
+    {
+        Navigation.NavigateTo($"/blogs?tag={TagId}");
+    }
+}

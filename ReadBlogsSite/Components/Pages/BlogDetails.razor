@@ -1,0 +1,45 @@
+@page "/blogs/{Id:int}"
+@using ReadBlogsSite.Components.Shared
+
+<div class="my-5">
+
+    <button class="btn mb-4 flex align-items-center gap-1"
+            @onclick="BackToBlogsHomePage">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14.1248 21.0999L5.6998 12.6999C5.5998 12.5999 5.52914 12.4916 5.4878 12.3749C5.4458 12.2582 5.4248 12.1332 5.4248 11.9999C5.4248 11.8666 5.4458 11.7416 5.4878 11.6249C5.52914 11.5082 5.5998 11.3999 5.6998 11.2999L14.1248 2.8749C14.3581 2.64157 14.6498 2.5249 14.9998 2.5249C15.3498 2.5249 15.6498 2.6499 15.8998 2.8999C16.1498 3.1499 16.2748 3.44157 16.2748 3.7749C16.2748 4.10824 16.1498 4.3999 15.8998 4.6499L8.5498 11.9999L15.8998 19.3499C16.1331 19.5832 16.2498 19.8706 16.2498 20.2119C16.2498 20.5539 16.1248 20.8499 15.8748 21.0999C15.6248 21.3499 15.3331 21.4749 14.9998 21.4749C14.6665 21.4749 14.3748 21.3499 14.1248 21.0999Z" fill="currentColor"/>
+        </svg>
+        Back to Blogs
+    </button>
+
+    <article class="mx-auto" style="max-width: 800px;">
+
+        <h1 class="mb-3">@blogModel.Title</h1>
+
+        <p class="text-muted mb-4">
+            Published by <strong>@blogModel.AuthorName</strong>
+            on @blogModel.DatePublished.Date.ToString("MMMM dd, yyyy")
+        </p>
+
+        <p>
+          @blogModel.ShortDescription
+        </p>
+
+        @if (blogModel.Tags != null && blogModel.Tags.Any())
+        {
+            <div class="mb-4 d-flex flex-wrap gap-2">
+                @foreach (var tag in blogModel.Tags)
+                {
+                    <TagItem TagId="@tag.Id" Name="@tag.Name" />
+                }
+            </div>
+        }
+
+        <hr />
+
+        <div class="border-rounded p-4 mt-4 shadow-sm bg-light">
+            @RenderedContent
+        </div>
+
+    </article>
+
+</div>
